@@ -6,3 +6,6 @@ This is the repository for my bookings and reservations project.
 - Uses [the chi router](https://github.com/go-chi/chi/v5)
 - Uses [alex edwards SCS session management](https://github.com/alexedwards/scs/v2)
 - Uses [nosurf](https://github.com/justinas/nosurf)
+
+- [Vanilla JS Datepicker](https://github.com/mymth/vanillajs-datepicker)
+- [Notie](https://github.com/jaredreich/notie)
