@@ -8,6 +8,7 @@
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker-bs5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
     <style>
         .my-footer {
             color: beige;
@@ -87,6 +88,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
+            <button id="magic" class="btn btn-primary">Push me</button>
         </div>
     </div>
 
@@ -109,11 +111,22 @@
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker-full.min.js"></script>
+<script src="https://unpkg.com/notie"></script>
 <script>
+    document.getElementById("magic").addEventListener("click", function (){alert("It`s work", "success")})
+
     const elem = document.getElementById('reservation-dates');
     const rangepicker = new DateRangePicker(elem, {
         format: "dd.mm.yyyy"
     });
+
+    function alert(msg, msgType){
+        notie.alert({
+            type: msgType,
+            text: msg,
+        })
+    }
+
 </script>
 </body>
 </html>
