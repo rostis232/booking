@@ -1,0 +1,38 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="container">
+    <div class="row mt5">
+        <div class="col text-center mb-4">
+            <h1>Check availability</h1>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <form action="/availability" method="post">
+                <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3 mb-3">
+                        <label for="start_date" class="form-label">Starting date</label>
+                        <input required type="date" class="form-control" id="start_date" name="start_date"
+                               aria-describedby="startDate">
+                        <div id="startDate" class="form-text">Enter your starting date.</div>
+                    </div>
+
+                    <div class="col-3 mb-3">
+                        <label for="end_date" class="form-label">Ending date</label>
+                        <input required type="date" class="form-control" id="end_date" name="end_date"
+                               aria-describedby="endDate">
+                        <div id="endDate" class="form-text">Enter your ending date.</div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+{{end}}
