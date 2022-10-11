@@ -1,5 +1,10 @@
 {{template "base" .}}
 
+{{define "title"}}
+Major`s Suite
+{{end}}
+
+
 {{define "content"}}
 <div class="container">
     <div class="row pt-5 pb-5">
@@ -37,8 +42,7 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
-                        <form action="/rooms/generals-quarters" method="get">
-
+                        <form action="#">
                             <div class="row">
                                 <div class="col mb-3">
                                     <label for="start_date" class="form-label">Starting date</label>
@@ -54,14 +58,35 @@
                                     <div id="endDate" class="form-text">Enter your ending date.</div>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
+
                         </form>
+                        <div class="text-center">
+                            <button class="btn btn-primary" id="button" onclick="sendValues()">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{{end}}
+
+{{define "js"}}
+<script>
+    function sendValues() {
+        // const {
+        //     msg = "",
+        //     title = ""
+        // } = c;
+        let start = document.getElementById("start_date").value;
+        let end = document.getElementById("end_date").value;
+        if (start) {
+            if (end) {
+                console.log(start, end)
+
+            }
+        }
+
+    }
+</script>
 {{end}}
