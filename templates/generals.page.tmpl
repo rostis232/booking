@@ -1,0 +1,51 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="container">
+    <div class="row pt-5 pb-5">
+        <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <img src="/static/img/generals-quarters.png" class="img-fluid img-thumbnail mx-auto d-block"
+                 alt="room image">
+        </div>
+        <div class="col text-center mb-4">
+            <h1 class="text-center mt-4">General`s quarters</h1>
+            <p class="text-center">В двокімнатному номері "Напівлюкс", гостям надається двоспальне ліжко з ортопедичним
+                матрацом, свіжа біла постільна білизна відмінної якості, а також білий махровий халат. Зручні подушки і
+                ковдри фірми "Billerbeck", забезпечать вам якісний відпочинок. Великий телевізійний екран дозволить
+                гостям дізнаватися останні новини, а наявність міні-холодильника, кондиціонера, душової кабіни з
+                рушниками, шампунем, милом зроблять перебування в номері максимально комфортним. </p>
+        </div>
+    </div>
+
+    <div class="row mt5">
+        <div class="col text-center mb-4">
+            <h1>Check availability</h1>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <form action="/rooms/generals-quarters" method="get">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3 mb-3">
+                        <label for="start_date" class="form-label">Starting date</label>
+                        <input required type="date" class="form-control" id="start_date" name="start_date"
+                               aria-describedby="startDate">
+                        <div id="startDate" class="form-text">Enter your starting date.</div>
+                    </div>
+
+                    <div class="col-3 mb-3">
+                        <label for="end_date" class="form-label">Ending date</label>
+                        <input required type="date" class="form-control" id="end_date" name="end_date"
+                               aria-describedby="endDate">
+                        <div id="endDate" class="form-text">Enter your ending date.</div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{end}}

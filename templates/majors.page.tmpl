@@ -1,0 +1,67 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="container">
+    <div class="row pt-5 pb-5">
+        <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <img src="/static/img/marjors-suite.png" class="img-fluid img-thumbnail mx-auto d-block" alt="room image">
+        </div>
+        <div class="col text-center mb-4">
+            <h1 class="text-center mt-4">Major`s Suite</h1>
+            <p class="text-center">Апартаменти - просторий номер з підвищеним рівнем комфорту. У просторій кімнаті
+                розташовується велике двоспальне ліжко, шафа-купе, спальний столик. Кухня оснащена всіма потрібними для
+                проживання речами. Великі панорамні вікна роблять приміщення світлим. Ванна кімната обладнана усім
+                необхідним приладдям. Окремий вхід, звукоізоляція, що ще потрібно для комфортного відпочинку?
+
+                Кожен з номерів обставлений новими меблями: (передпокої, шафа, вішалка, велике дзеркало, журнальний
+                столик).
+                Прибирання - щодня.
+
+                Сніданок обговорюэться заздалегідь і оплачується окремо. Також наші гості можуть поснідати, пообідати чи
+                повечеряти в «Home Cafe», і отримати як комплімент безкоштовну каву! </p>
+        </div>
+
+
+    </div>
+    <div class="row pb-5">
+        <div class="col text-center">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Search Availability
+            </button>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <form action="/rooms/generals-quarters" method="get">
+
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <label for="start_date" class="form-label">Starting date</label>
+                                    <input required type="date" class="form-control" id="start_date" name="start_date"
+                                           aria-describedby="startDate">
+                                    <div id="startDate" class="form-text">Enter your starting date.</div>
+                                </div>
+
+                                <div class="col mb-3">
+                                    <label for="end_date" class="form-label">Ending date</label>
+                                    <input required type="date" class="form-control" id="end_date" name="end_date"
+                                           aria-describedby="endDate">
+                                    <div id="endDate" class="form-text">Enter your ending date.</div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}
