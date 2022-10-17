@@ -57,7 +57,8 @@ func RenderTemplate(w http.ResponseWriter, r *http.Request, tmpl string, td *mod
 	parsedTemplate, _ := template.ParseFiles("./templates/" + tmpl)
 	err = parsedTemplate.Execute(w, nil)
 	if err != nil {
-		//FIXME: Check the error
+		/*FIXME: Check the error. Template parsing is successful bot err != nil!
+		(html/template:majors.page.tmpl:1:11: no such template)*/
 		fmt.Println("error parsing template", err)
 		return
 	}

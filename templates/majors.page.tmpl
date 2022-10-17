@@ -30,42 +30,9 @@ Major`s Suite
     </div>
     <div class="row pb-5">
         <div class="col text-center">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary" id="swal_button">
                 Search Availability
             </button>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <form action="#">
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="start_date" class="form-label">Starting date</label>
-                                    <input required type="date" class="form-control" id="start_date" name="start_date"
-                                           aria-describedby="startDate">
-                                    <div id="startDate" class="form-text">Enter your starting date.</div>
-                                </div>
-
-                                <div class="col mb-3">
-                                    <label for="end_date" class="form-label">Ending date</label>
-                                    <input required type="date" class="form-control" id="end_date" name="end_date"
-                                           aria-describedby="endDate">
-                                    <div id="endDate" class="form-text">Enter your ending date.</div>
-                                </div>
-                            </div>
-
-                        </form>
-                        <div class="text-center">
-                            <button class="btn btn-primary" id="button" onclick="sendValues()">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -73,20 +40,38 @@ Major`s Suite
 
 {{define "js"}}
 <script>
-    function sendValues() {
-        // const {
-        //     msg = "",
-        //     title = ""
-        // } = c;
-        let start = document.getElementById("start_date").value;
-        let end = document.getElementById("end_date").value;
-        if (start) {
-            if (end) {
-                console.log(start, end)
+    let attention = Prompt();
 
-            }
+    document.getElementById("swal_button").addEventListener("click", function () {
+        // notifyModal('Title', '<em>Some Text</em>', 'error', 'OK')
+        attention.toast();
+    })
+
+    function notifyModal(title, text, icon, confirmButtonText) {
+        Swal.fire({
+            title: title,
+            html: text,
+            icon: icon,
+            confirmButtonText: confirmButtonText
+        })
+    }
+
+    function Prompt() {
+        let toast = function (){
+            console.log("Clicked button and got toast")
+        }
+
+        let success = function (){
+            console.log("Clicked button and got success")
+        }
+
+        return {
+            toast: toast,
+            success: success,
         }
 
     }
+
 </script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {{end}}
