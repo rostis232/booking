@@ -4,13 +4,12 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/justinas/nosurf"
+	"github.com/rostis232/booking/internal/config"
+	"github.com/rostis232/booking/internal/models"
 	"html/template"
 	"log"
 	"net/http"
 	"path/filepath"
-
-	"github.com/rostis232/booking/pkg/config"
-	"github.com/rostis232/booking/pkg/models"
 )
 
 var functions = template.FuncMap{}

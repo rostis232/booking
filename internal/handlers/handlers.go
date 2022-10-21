@@ -3,12 +3,11 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/rostis232/booking/internal/config"
+	"github.com/rostis232/booking/internal/models"
+	"github.com/rostis232/booking/internal/render"
 	"log"
 	"net/http"
-
-	"github.com/rostis232/booking/pkg/config"
-	"github.com/rostis232/booking/pkg/models"
-	"github.com/rostis232/booking/pkg/render"
 )
 
 // Repo the repository used by the handlers

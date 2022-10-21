@@ -1,12 +1,12 @@
 package main
 
 import (
+	"github.com/rostis232/booking/internal/config"
+	"github.com/rostis232/booking/internal/handlers"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/rostis232/booking/pkg/config"
-	"github.com/rostis232/booking/pkg/handlers"
 )
 
 func routes(a *config.AppConfig) http.Handler {

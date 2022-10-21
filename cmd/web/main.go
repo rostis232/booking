@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
+	"github.com/rostis232/booking/internal/config"
+	"github.com/rostis232/booking/internal/handlers"
+	"github.com/rostis232/booking/internal/render"
 	"log"
 	"net/http"
 	"time"
 
 	"github.com/alexedwards/scs/v2"
-	"github.com/rostis232/booking/pkg/config"
-	"github.com/rostis232/booking/pkg/handlers"
-	"github.com/rostis232/booking/pkg/render"
 )
 
 const portNumber = ":8080"
