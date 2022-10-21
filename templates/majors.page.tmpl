@@ -4,7 +4,6 @@
 Major`s Suite
 {{end}}
 
-
 {{define "content"}}
 <div class="container">
     <div class="row pt-5 pb-5">
@@ -43,31 +42,140 @@ Major`s Suite
     let attention = Prompt();
 
     document.getElementById("swal_button").addEventListener("click", function () {
-        // notifyModal('Title', '<em>Some Text</em>', 'error', 'OK')
-        attention.toast();
+        html = `
+        <form id="check_availability_form" action="" method="post" novalidate class="needs-validation">
+            <div class="row form-row">
+                        <div class="col">
+                            <label for="start_date" class="form-label">Starting date</label>
+                            <input required type="date" class="form-control" id="start_date" name="start_date"
+                               aria-describedby="startDate">
+                            <div id="startDate" class="form-text">Enter your starting date.</div>
+                        </div>
+                        <div class="col">
+                            <label for="end_date" class="form-label">Ending date</label>
+                            <input required type="date" class="form-control" id="end_date" name="end_date"
+                               aria-describedby="endDate">
+                            <div id="endDate" class="form-text">Enter your ending date.</div>
+                        </div>
+            </div>
+        </form>
+        `
+        attention.custom({
+            title: "Enter your dates",
+            text: html,
+            callback: function(formValues) {
+                console.log("called")
+
+                let form = document.getElementById("check_availability_form");
+                let formData = new FormData(form);
+                formData.append("csrf_token", "{{.CSRFToken}}");
+                console.log(form.values)
+
+                fetch("/availability-json", {
+                    method: "post",
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+            }
+        })
     })
 
-    function notifyModal(title, text, icon, confirmButtonText) {
-        Swal.fire({
-            title: title,
-            html: text,
-            icon: icon,
-            confirmButtonText: confirmButtonText
-        })
-    }
 
     function Prompt() {
-        let toast = function (){
-            console.log("Clicked button and got toast")
+        let toast = function (c) {
+            const {
+                title = "",
+                icon = "success",
+                position = "top-end"
+            } = c;
+            const Toast = Swal.mixin({
+                toast: true,
+                position: position,
+                icon: icon,
+                title: title,
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({})
         }
 
-        let success = function (){
-            console.log("Clicked button and got success")
+        let success = function (c) {
+            const {
+                title = "",
+                text = "",
+                footer = ""
+            } = c;
+            Swal.fire({
+                icon: 'success',
+                title: title,
+                text: text,
+                footer: footer
+            })
+        }
+
+        let error = function (c) {
+            const {
+                title = "",
+                text = "",
+                footer = ""
+            } = c;
+            Swal.fire({
+                icon: 'error',
+                title: title,
+                text: text,
+                footer: footer
+            })
+        }
+
+        async function custom(c) {
+            const {
+                title = "",
+                text = ""
+            } = c;
+
+            const { value: formValues } = await Swal.fire({
+                title: title,
+                html: text,
+                backdrop: false,
+                showCancelButton: true,
+                focusConfirm: false,
+                preConfirm: () => {
+                    return [
+                        document.getElementById('start_date').value,
+                        document.getElementById('end_date').value
+                    ]
+                }
+            })
+
+            if (formValues) {
+                if (formValues.dismiss !== Swal.DismissReason.cancel) {
+                    if (formValues.value !== "") {
+                        if (c.callback !== undefined) {
+                            c.callback(formValues);
+                        }
+                    } else {
+                        c.callback(false);
+                    }
+                } else {
+                    c.callback(false);
+                }
+            }
         }
 
         return {
             toast: toast,
             success: success,
+            error: error,
+            custom: custom,
         }
 
     }

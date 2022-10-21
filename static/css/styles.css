@@ -4,3 +4,8 @@
     padding-top: 10px;
     height: 3em;
 }
+
+.form-row {
+    width: 100%;
+    padding: 10px;
+}
