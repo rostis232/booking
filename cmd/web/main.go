@@ -12,7 +12,7 @@ import (
 	"github.com/alexedwards/scs/v2"
 )
 
-const portNumber = ":8080"
+//const portNumber = ":8080"
 
 var app config.AppConfig
 var session *scs.SessionManager
@@ -43,10 +43,10 @@ func main() {
 
 	render.NewTemplates(&app)
 
-	fmt.Printf("Starting application on port %s\n", portNumber)
+	fmt.Printf("Starting application on port %s\n", config.PortNumber)
 
 	srv := &http.Server{
-		Addr:    portNumber,
+		Addr:    config.PortNumber,
 		Handler: routes(&app),
 	}
 

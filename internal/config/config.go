@@ -12,3 +12,5 @@ type AppConfig struct {
 	InProduction  bool
 	Session       *scs.SessionManager
 }
+
+const PortNumber = ":8000"
