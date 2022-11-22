@@ -13,7 +13,8 @@ Make Reservation
     </div>
     <div class="row mb-3">
         <div class="col">
-            <form action="/make-reservation" method="get">
+            <form action="/make-reservation" method="post" novalidate>
+            <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
                 <div class="row">
                     <div class="col mb-3">
                         <label for="first_name" class="form-label mt-3">First name</label>

@@ -3,11 +3,13 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/rostis232/booking/internal/config"
-	"github.com/rostis232/booking/internal/models"
-	"github.com/rostis232/booking/internal/render"
 	"log"
 	"net/http"
+
+	"github.com/rostis232/booking/internal/config"
+	"github.com/rostis232/booking/internal/forms"
+	"github.com/rostis232/booking/internal/models"
+	"github.com/rostis232/booking/internal/render"
 )
 
 // Repo the repository used by the handlers
@@ -100,5 +102,12 @@ func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
 
 // Reservation renders a reservation page
 func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, r, "reservation.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(w, r, "reservation.page.tmpl", &models.TemplateData{
+		Form: forms.New(nil),
+	})
+}
+
+//PostReservation handles  the posting of a reservation form
+func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
+
 }

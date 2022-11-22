@@ -13,4 +13,4 @@ type AppConfig struct {
 	Session       *scs.SessionManager
 }
 
-const PortNumber = ":8000"
+const PortNumber = ":8080"
