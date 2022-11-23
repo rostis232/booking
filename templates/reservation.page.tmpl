@@ -18,7 +18,10 @@ Make Reservation
                 <div class="row">
                     <div class="col mb-3">
                         <label for="first_name" class="form-label mt-3">First name</label>
-                        <input required type="text" class="form-control" id="first_name" name="first_name">
+                        {{with .Form.Errors.Get "first_name"}}
+                            <lable class="text-danger">{{.}}</lable>
+                        {{end}}
+                        <input required type="text" class="form-control {{with .Form.Errors.Get "first_name"}} is-invalid {{end}}" id="first_name" name="first_name">
 
                         <label for="last_name" class="form-label mt-3">Last name</label>
                         <input required type="text" class="form-control" id="last_name" name="last_name">
